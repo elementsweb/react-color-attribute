@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import * as React from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 
 import ColorAttribute from '../src/ColorAttribute';
 
 const MultipleColorAttributes = () => {
-  const [colour, setColor] = useState('orange');
+  const [colour, setColor] = React.useState('orange');
 
   return (
     <>
@@ -14,35 +14,35 @@ const MultipleColorAttributes = () => {
         id="orange"
         selected={colour === 'orange'}
         onMouseEnter={action('mouseEnter')}
-        onClick={(id) => setColor(id)}
+        onClick={(id: string) => setColor(id)}
       />
       <ColorAttribute
         colors={['#FF3C38']}
         id="red"
         selected={colour === 'red'}
         onMouseEnter={action('mouseEnter')}
-        onClick={(id) => setColor(id)}
+        onClick={(id: string) => setColor(id)}
       />
       <ColorAttribute
         colors={['#A23E48']}
         id="brown"
         selected={colour === 'brown'}
         onMouseEnter={action('mouseEnter')}
-        onClick={(id) => setColor(id)}
+        onClick={(id: string) => setColor(id)}
       />
       <ColorAttribute
         colors={['#276FBF', '#183059']}
         id="darkblue-blue"
         selected={colour === 'darkblue-blue'}
         onMouseEnter={action('mouseEnter')}
-        onClick={(id) => setColor(id)}
+        onClick={(id: string) => setColor(id)}
       />
       <ColorAttribute
         colors={['#F03A47', '#F6F4F3', '#276FBF']}
         id="red-white-blue"
         selected={colour === 'red-white-blue'}
         onMouseEnter={action('mouseEnter')}
-        onClick={(id) => setColor(id)}
+        onClick={(id: string) => setColor(id)}
       />
 
       <p>Color selected: {colour}</p>
@@ -75,11 +75,11 @@ storiesOf('ColorAttribute', module)
   ))
   .add('selected', () => (
     <>
-      <ColorAttribute colors={['#FFF', '#DA627D']} selected />
+      <ColorAttribute id="pink-white" colors={['#FFF', '#DA627D']} selected />
     </>
   ))
   .add('mini', () => (
     <>
-      <ColorAttribute colors={['#FFF', '#DA627D']} size={18} />
+      <ColorAttribute id="pink-white" colors={['#FFF', '#DA627D']} size={18} />
     </>
   ));

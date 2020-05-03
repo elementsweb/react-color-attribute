@@ -1,8 +1,8 @@
-import React from 'react';
+import * as React from 'react';
 import { createUseStyles } from 'react-jss';
 
 const useStyles = createUseStyles({
-  root: ({ size }) => ({
+  root: ({ size }: ColorWheelProps) => ({
     width: size,
     height: size,
     position: 'relative',
@@ -27,7 +27,12 @@ const useStyles = createUseStyles({
   },
 });
 
-const ColorWheel = ({ colors, size }) => {
+interface ColorWheelProps {
+  colors: string[];
+  size: number;
+}
+
+const ColorWheel = ({ colors, size = 32 }: ColorWheelProps): JSX.Element => {
   const classes = useStyles({ size });
 
   const numberOfSlices = colors.length;
@@ -76,10 +81,6 @@ const ColorWheel = ({ colors, size }) => {
       </svg>
     </div>
   );
-};
-
-ColorWheel.defaultProps = {
-  size: 32,
 };
 
 export default ColorWheel;

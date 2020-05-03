@@ -1,10 +1,10 @@
 {
   "name": "react-color-attribute",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "React component for product colour attributes",
-  "main": "./lib/index.js",
+  "main": "./build/index.js",
   "scripts": {
-    "build": "rimraf lib && babel src -d lib --copy-files",
+    "build": "tsc",
     "storybook": "start-storybook",
     "build-storybook": "build-storybook --output-dir docs",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -25,25 +25,23 @@
   },
   "homepage": "https://github.com/elementsweb/react-color-attribute#readme",
   "peerDependencies": {
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6"
+    "react": "^16.x",
+    "react-dom": "^16.x"
   },
   "dependencies": {
-    "prop-types": "^15.7.2",
-    "react-jss": "^10.0.0-alpha.23"
+    "react-jss": "^10.1.1"
   },
   "devDependencies": {
-    "@babel/cli": "^7.5.5",
-    "@babel/core": "^7.5.5",
-    "@babel/plugin-proposal-class-properties": "^7.5.5",
-    "@babel/preset-env": "^7.5.5",
-    "@babel/preset-react": "^7.0.0",
     "@storybook/addon-actions": "^5.1.10",
-    "@storybook/react": "^5.1.10",
+    "@storybook/preset-typescript": "^3.0.0",
+    "@storybook/react": "^5.3.18",
+    "@types/react": "^16.9.34",
+    "@types/react-dom": "^16.9.7",
     "babel-loader": "^8.0.6",
     "prettier": "^1.18.2",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "rimraf": "^2.6.3"
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "rimraf": "^2.6.3",
+    "typescript": "^3.8.3"
   }
 }

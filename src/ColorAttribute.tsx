@@ -1,11 +1,10 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
 import { createUseStyles } from 'react-jss';
 
 import ColorWheel from './ColorWheel';
 
 const useStyles = createUseStyles({
-  root: (props) => {
+  root: (props: ColorAttributeProps) => {
     const rootStyles = {
       display: 'inline-block',
       padding: 3,
@@ -27,15 +26,25 @@ const useStyles = createUseStyles({
   },
 });
 
+interface ColorAttributeProps {
+  colors: string[];
+  id: string;
+  size?: number;
+  selected?: boolean;
+  onMouseEnter?: Function;
+  onMouseLeave?: Function;
+  onClick?: Function;
+}
+
 const ColorAttribute = ({
-  colors,
-  selected,
-  size,
+  colors = [],
+  selected = false,
+  size = 32,
   id,
   onMouseEnter,
   onMouseLeave,
   onClick,
-}) => {
+}: ColorAttributeProps): JSX.Element => {
   const classes = useStyles({ size, selected, onMouseEnter });
 
   return (
@@ -45,47 +54,9 @@ const ColorAttribute = ({
       onMouseLeave={onMouseLeave ? () => onMouseLeave(id) : undefined}
       onClick={onClick ? () => onClick(id) : undefined}
     >
-      <ColorWheel colors={colors} size={size} onClick={onClick} />
+      <ColorWheel colors={colors} size={size} />
     </div>
   );
-};
-
-ColorAttribute.defaultProps = {
-  size: 32,
-  colors: [],
-  selected: false,
-};
-
-ColorAttribute.propTypes = {
-  /**
-   * Valid CSS color to render in color attribute
-   */
-  colors: PropTypes.arrayOf(PropTypes.string),
-
-  /**
-   * Unique identifier for the color attribute
-   */
-  id: PropTypes.string,
-
-  /**
-   * Determines if the component should render in a selected state
-   */
-  selected: PropTypes.bool,
-
-  /**
-   * Callback to fire when mouse enters component
-   */
-  onMouseEnter: PropTypes.func,
-
-  /**
-   * Callback to fire when mouse leaves component
-   */
-  onMouseLeave: PropTypes.func,
-
-  /**
-   * Callback to fire when component is clicked
-   */
-  onMouseClick: PropTypes.func,
 };
 
 export default ColorAttribute;
